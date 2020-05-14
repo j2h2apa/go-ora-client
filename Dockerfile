@@ -11,18 +11,18 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* \
 
-	&& wget https://github.com/thbono/go-oracle/raw/master/instantclient-basic-linux.x64-11.2.0.4.0.zip \
-	&& wget https://github.com/thbono/go-oracle/raw/master/instantclient-sdk-linux.x64-11.2.0.4.0.zip \
+	&& wget https://github.com/j2h2apa/go-ora-client/raw/master/instantclient-basic-linux.x64-19.6.0.0.0dbru.zip \
+	&& wget https://github.com/j2h2apa/go-ora-client/raw/master/instantclient-sdk-linux.x64-19.6.0.0.0dbru.zip \
 
 	&& unzip instantclient-basic-linux.x64-*.zip -d / \
 	&& unzip instantclient-sdk-linux.x64-*.zip -d / \
 
 	&& rm instantclient-*-linux.x64-*.zip \
 
-	&& ln -s /instantclient_11_2/libclntsh.so.11.1 /instantclient_11_2/libclntsh.so
+#	&& ln -s /instantclient_11_2/libclntsh.so.11.1 /instantclient_11_2/libclntsh.so
 
 # The package config doesn't seem to be enough, this is also required
-ENV LD_LIBRARY_PATH /instantclient_11_2
+ENV LD_LIBRARY_PATH /instantclient_19_6
 
 # Get ora dep
-RUN go get -d -v gopkg.in/rana/ora.v4
+# RUN go get -d -v gopkg.in/rana/ora.v4
